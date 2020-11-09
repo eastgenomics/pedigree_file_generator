@@ -10,7 +10,7 @@ import os
 # colnames = colnames[0]
 # print(colnames[0])
 
-# # Drop irrelevant data and rename header 
+# # Drop irrelevant data and rename header
 # df = df.drop(df.index[0:21])
 # df.columns = colnames
 # print(df.head(10))
