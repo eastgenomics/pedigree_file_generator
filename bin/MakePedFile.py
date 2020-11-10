@@ -48,10 +48,8 @@ def ped_files(project_path):
         print(sample)
         filename = samplesID[sample]
         df2 = df.loc[[sample]]
-        print(df2)
         writePath = folder + filename + ped
-        with open(writePath, 'w') as f_output:
-            tsv_output = csv.writer(f_output, delimiter='\t')
-            tsv_output.writerow(df2)
+        df2.to_csv(writePath, sep="\t", index=False, header = False)
 
-ped_files(os.getcwd())
+vcf_filepath = input("vcf_filepath: ") 
+ped_files(vcf_filepath)
