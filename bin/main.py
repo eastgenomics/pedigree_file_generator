@@ -6,7 +6,7 @@ import os
 func.ped_files()
 
 # Run  peddy
-os.system("sh bin/Peddy.sh")
+os.system("bash bin/Peddy.sh")
 
 # Predict Sex
 func.AllSexCheckCSV()
