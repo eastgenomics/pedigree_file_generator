@@ -12,3 +12,4 @@ os.system("bash bin/Peddy.sh")
 func.AllSexCheckCSV()
 
 # Plots
+func.PlotHetRatio('PredictedSex.csv','sample_id', 'het_ratio')
