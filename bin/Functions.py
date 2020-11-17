@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import csv
 import glob
+import matplotlib.pyplot as plt
+import numpy
 
 
 # Get samples from the vcf file name and make ped files
@@ -73,4 +75,28 @@ def AllSexCheckCSV():
     writePath = path + '/Data/Peddy/' + 'PredictedSex.csv'
     df.to_csv(writePath, sep="\t", index=False)
 
-# Other plot functions
+# Plot functions
+def PlotHetRatio(file, x, y):
+    #file = PredictedSex file
+    #x = colname1 (string)
+    #y = colname2 (string)
+    filepath = "../Data/Peddy/" + file
+    dat = pd.read_table(filepath, sep = '\t', index_col=None)
+    print(dat)
+    # convert the table to dictionary where the keys are column names, then each value has a key where the key is the 
+    # sample ID number and the value is the expected value
+    dat2 = pd.DataFrame.to_dict(dat)
+
+    # Take out the x values from the dic to a list
+    xaxis = []
+    for i in range(0,len(dat2[x])):
+        xaxis.append(dat2[x][i])
+
+    # Take out the y values from the dic to a list
+    yaxis = []
+    for i in range(0,len(dat2[y])):
+        yaxis.append(dat2[y][i])
+
+    plt.plot(xaxis,yaxis, 'ro')
+    plt.axis([-1, len(xaxis), 0, 2]) #[xmin, xmax, ymin, ymax]
+    plt.savefig('../Data/Peddy/PredictedSex.png')
